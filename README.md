@@ -10,32 +10,31 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 -->
 
-aio-cli-config
+aio-cna-core-config
 =======================
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@adobe/aio-cli-config.svg)](https://npmjs.org/package/@adobe/aio-cli-config)
-[![Downloads/week](https://img.shields.io/npm/dw/@adobe/aio-cli-config.svg)](https://npmjs.org/package/@adobe/aio-cli-config)
-[![Build Status](https://travis-ci.com/adobe/aio-cli-config.svg?branch=master)](https://travis-ci.com/adobe/aio-cli-config)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/aio-cli-plugin-pgb.svg)](https://greenkeeper.io/)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-cli-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-cli-config/)
+[![Version](https://img.shields.io/npm/v/@adobe/aio-cna-core-config.svg)](https://npmjs.org/package/@adobe/aio-cna-core-config)
+[![Downloads/week](https://img.shields.io/npm/dw/@adobe/aio-cna-core-config.svg)](https://npmjs.org/package/@adobe/aio-cna-core-config)
+[![Build Status](https://travis-ci.com/adobe/aio-cna-core-config.svg?branch=master)](https://travis-ci.com/adobe/aio-cna-core-config)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/aio-cna-core-config.svg)](https://greenkeeper.io/)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-cna-core-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-cna-core-config/)
 
-This is a nodejs module to allow management of persistant and environment variable configuration by aio-cli plugins.
+This is a nodejs module to allow management of persistant and environment variable configuration.
 
 The module can be added to your project with:
 
 ```javascript
-> yarn add aio-cli-config
+> yarn add aio-cna-core-config
 
 or
 
-> npm install aio-cli-config --save
+> npm install aio-cna-core-config --save
 ```
 
 Here is a snippet:
 
 ```javascript
-const config = require('aio-cli-config')
+const config = require('aio-cna-core-config')
 
 // set a key value
 config.set('pgb.authtoken', 1234)

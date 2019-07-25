@@ -1,6 +1,6 @@
 {
   "name": "@adobe/aio-cna-core-config",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Adobe I/O Configuration Module",
   "main": "./src",
   "repository": "https://github.com/adobe/aio-cna-core-config",

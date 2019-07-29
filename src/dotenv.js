@@ -15,6 +15,7 @@ const path = require('path')
 const envFile = Symbol.for(`aio-cli-config.envfile`)
 const envVars = Symbol.for(`aio-cli-config.envVars`)
 const debug = require('debug')('aio-cli-config')
+const dotenv = require('dotenv')
 
 /**
  * parse file for environmental variables
@@ -22,28 +23,8 @@ const debug = require('debug')('aio-cli-config')
  * @param {String} file filepath to parse
  */
 const parse = (file) => {
-  const SINGLE_QUOTE_RE = new RegExp(/^\s*(.*)=\s*'((''|[^'])*)'/, 'gm')
-  const DOUBLE_QUOTE_RE = new RegExp(/^\s*(.*)=\s*"((""|[^"])*)"/, 'gm')
-  const NO_QUOTE_RE = new RegExp(/^\s*(.*)=\s*([^'"].*)$/, 'gm')
-
-  let result = {}
-  let matches
-
-  const str = fs.readFileSync(file, 'utf-8')
-
-  while ((matches = SINGLE_QUOTE_RE.exec(str))) {
-    result[matches[1]] = matches[2].replace(/''/g, "'")
-  }
-
-  while ((matches = DOUBLE_QUOTE_RE.exec(str))) {
-    result[matches[1]] = matches[2].replace(/""/g, '"')
-  }
-
-  while ((matches = NO_QUOTE_RE.exec(str))) {
-    result[matches[1]] = matches[2].replace(/ #.*$/, '').trim()
-  }
-
-  return result
+  const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
+  return dotenv.parse(buf) // will return an object
 }
 
 /**

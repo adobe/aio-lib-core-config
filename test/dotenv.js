@@ -112,6 +112,15 @@ describe('parse', () => {
     expect(process.env).toEqual(processenv)
   })
 
+  test('empty values', () => {
+    fs.writeFileSync('/project/.env', fixtureFile('empty_values'))
+    dotenv()
+    expect(process.env.A).toEqual('')
+    expect(process.env.B).toEqual('')
+    expect(process.env.C).toEqual('')
+    expect(process.env.D).toEqual('')
+  })
+
   test('comment', () => {
     fs.writeFileSync('/project/.env', fixtureFile('comment'))
     dotenv()

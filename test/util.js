@@ -149,12 +149,12 @@ describe('setValue', () => {
 
   test('creates object if it doesnt exist in passed in object', () => {
     const obj = { a: { b: 1, d: { e: 12 } } }
-    expect(setValue('a.d.foo', { bar: 1 }, obj)).toEqual({ 'a': { 'b': 1, 'd': { 'e': 12, 'foo': { 'bar': 1 } } } })
+    expect(setValue('a.d.foo', { bar: 1 }, obj)).toEqual({ a: { b: 1, d: { e: 12, foo: { bar: 1 } } } })
   })
 
   test('replaces object if its in the way', () => {
     const obj = { a: { b: 1, d: { e: 12 } } }
-    expect(setValue('a.d', 12, obj)).toEqual({ 'a': { b: 1, 'd': 12 } })
+    expect(setValue('a.d', 12, obj)).toEqual({ a: { b: 1, d: 12 } })
   })
 })
 
@@ -180,11 +180,11 @@ describe('merge', () => {
   })
 
   test('overrides non object values 1', () => {
-    expect(merge({ b: 'a' }, { b: { foo: 'bar' } })).toEqual({ 'b': { 'foo': 'bar' } })
+    expect(merge({ b: 'a' }, { b: { foo: 'bar' } })).toEqual({ b: { foo: 'bar' } })
   })
 
   test('overrides non object values 2', () => {
-    expect(merge({ b: { foo: 'bar' } }, { b: 'a' })).toEqual({ 'b': 'a' })
+    expect(merge({ b: { foo: 'bar' } }, { b: 'a' })).toEqual({ b: 'a' })
   })
 
   test('overrides non object values 3', () => {
@@ -205,14 +205,14 @@ describe('merge', () => {
   })
 
   test('merge should not alter objects to merge', () => {
-    let g = { foo: { bar: 'abc123' } }
-    let l = { foo: { bar: 'baz' } }
-    let e = { abcxyz: '123456' }
+    const g = { foo: { bar: 'abc123' } }
+    const l = { foo: { bar: 'baz' } }
+    const e = { abcxyz: '123456' }
 
     expect(merge(g, l, e)).toStrictEqual({
-      'abcxyz': '123456',
-      'foo': {
-        'bar': 'baz'
+      abcxyz: '123456',
+      foo: {
+        bar: 'baz'
       }
     })
     expect(g.foo.bar).toEqual('abc123')

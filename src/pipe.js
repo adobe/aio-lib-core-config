@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-const status = Symbol.for(`aio-cli-config.pipe`)
+const status = Symbol.for('aio-cli-config.pipe')
 
 /**
  * get piped data from stdin
@@ -18,12 +18,12 @@ const status = Symbol.for(`aio-cli-config.pipe`)
 module.exports = () => new Promise((resolve) => {
   if (global[status] || process.stdin.isTTY) return resolve(global[status])
 
-  let data = []
+  const data = []
 
   process.stdin.on('data', line => data.push(line.toString()))
 
   process.stdin.once('end', () => {
-    let result = data.join('')
+    const result = data.join('')
     global[status] = result
     resolve(result)
   })

@@ -1,7 +1,7 @@
 module.exports = {
   collectCoverage: true,
   verbose: false,
-  collectCoverageFrom: [ 'src/*.js' ],
+  collectCoverageFrom: ['src/*.js'],
   testRegex: '/test/[^/]*.js$',
   coverageDirectory: 'tmp/coverage',
   setupFiles: [

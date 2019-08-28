@@ -1,5 +1,5 @@
 const pipe = require('../src/pipe')
-const status = Symbol.for(`aio-cli-config.pipe`)
+const status = Symbol.for('aio-cli-config.pipe')
 
 describe('piped data', () => {
   let stdin

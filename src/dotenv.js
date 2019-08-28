@@ -12,8 +12,8 @@ governing permissions and limitations under the License.
 
 const fs = require('fs')
 const path = require('path')
-const envFile = Symbol.for(`aio-cli-config.envfile`)
-const envVars = Symbol.for(`aio-cli-config.envVars`)
+const envFile = Symbol.for('aio-cli-config.envfile')
+const envVars = Symbol.for('aio-cli-config.envVars')
 const debug = require('debug')('aio-cli-config')
 const dotenv = require('dotenv')
 
@@ -41,9 +41,9 @@ const diff = (o1, o2) => Object.keys(o1).filter(k => !(k in o2))
  * clears prviously hoisted environment variables from process.env
  */
 const clear = () => {
-  let existingKeys = global[envVars]
+  const existingKeys = global[envVars]
   if (existingKeys && existingKeys.forEach) {
-    for (let key of existingKeys) {
+    for (const key of existingKeys) {
       delete process.env[key]
     }
     delete global[envVars]

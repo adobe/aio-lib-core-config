@@ -11,6 +11,9 @@ module.exports = {
   env: {
     'jest/globals': true
   },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },  
   "globals": {
     "fixtureFile": true
   },

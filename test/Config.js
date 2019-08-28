@@ -16,10 +16,10 @@ const path = require('path')
 const hjson = require('hjson')
 
 // mock dir stuff
-let processcwd = process.cwd
-let oshomedir = os.homedir
+const processcwd = process.cwd
+const oshomedir = os.homedir
 
-let hjsonFormat = (obj) => hjson.stringify(obj, { condense: true, emitRootBraces: true, separator: true, bracesSameLine: true, multiline: 'off' })
+const hjsonFormat = (obj) => hjson.stringify(obj, { condense: true, emitRootBraces: true, separator: true, bracesSameLine: true, multiline: 'off' })
 
 beforeAll(() => {
   os.homedir = () => path.resolve('/Users/foo')
@@ -43,67 +43,67 @@ describe('Config', () => {
   })
 
   test('should return an object', () => {
-    let config = new Config()
+    const config = new Config()
     expect(config.constructor.name).toEqual('Config')
   })
 
   test('should initialise values', () => {
-    let config = new Config()
+    const config = new Config()
     config.reload()
-    expect(config.global).toEqual({ file: path.resolve('/Users/foo/.config/aio'), 'format': 'json' })
-    expect(config.local).toEqual({ file: path.resolve('/Project/runtime/.aio'), 'format': 'json' })
+    expect(config.global).toEqual({ file: path.resolve('/Users/foo/.config/aio'), format: 'json' })
+    expect(config.local).toEqual({ file: path.resolve('/Project/runtime/.aio'), format: 'json' })
   })
 
   describe('load', () => {
     test('should be passed in function', () => {
-      let debug = () => true
-      let config = new Config(debug)
+      const debug = () => true
+      const config = new Config(debug)
       expect(config.reload()).toBe(config)
     })
   })
 
   describe('get', () => {
     test('should be an empty function', () => {
-      let config = new Config()
+      const config = new Config()
       expect(config.get()).toEqual(config.values)
       expect(config.get('')).toEqual(config.values)
       expect(config.get('    ')).toEqual(config.values)
     })
 
     test('should default to json storage', () => {
-      let config = new Config()
+      const config = new Config()
       config.reload()
       expect(config.global.format).toBe('json')
       expect(config.local.format).toBe('json')
     })
 
     test('should return undefined on unknown key', () => {
-      let config = new Config()
+      const config = new Config()
       expect(config.get('unknown.key')).toEqual(undefined)
     })
 
     test('should return value at key', () => {
-      let config = new Config()
+      const config = new Config()
       config.values = { a: { key: 'global1' } }
       expect(config.get('a.key')).toEqual('global1')
     })
 
     test('should return env value at key', () => {
-      let config = new Config()
+      const config = new Config()
       config.global = { values: { a: { key: 'global2' } } }
       config.values = {}
       expect(config.get('a.key', 'global')).toEqual('global2')
     })
 
     test('should return local value at key', () => {
-      let config = new Config()
+      const config = new Config()
       config.local = { values: { a: { key: 'local' } } }
       config.values = {}
       expect(config.get('a.key', 'local')).toEqual('local')
     })
 
     test('should return global value at key', () => {
-      let config = new Config()
+      const config = new Config()
       config.envs = { a: { key: 'env' } }
       config.values = {}
       expect(config.get('a.key', 'env')).toEqual('env')
@@ -158,19 +158,19 @@ describe('Config', () => {
 
   describe('envs', () => {
     test('should set value from env', () => {
-      process.env['AIO_PGB_AUTH__TOKEN'] = 12
-      process.env['AIO_RUNTIME'] = 12
-      process.env['AIOBAD'] = 12
-      let config = new Config()
-      expect(config.get()).toEqual({ 'pgb': { 'auth_token': '12' }, 'runtime': '12' })
+      process.env.AIO_PGB_AUTH__TOKEN = 12
+      process.env.AIO_RUNTIME = 12
+      process.env.AIOBAD = 12
+      const config = new Config()
+      expect(config.get()).toEqual({ pgb: { auth_token: '12' }, runtime: '12' })
     })
 
     test('should override local and global settings', () => {
-      let config = new Config()
+      const config = new Config()
       expect(config.set('pgb.name', 'local', true)).toBe(config)
       expect(config.set('pgb.name', 'global', false)).toBe(config)
       expect(config.get('pgb.name')).toBe('local')
-      process.env['AIO_PGB_NAME'] = 'foobar'
+      process.env.AIO_PGB_NAME = 'foobar'
       config.reload()
       expect(config.get('pgb.name')).toBe('foobar')
     })
@@ -178,7 +178,7 @@ describe('Config', () => {
 
   describe('debugging', () => {
     test('should not fail on error', () => {
-      let config = new Config()
+      const config = new Config()
       fs.readFileSync = jest.fn(() => {
         throw new Error('a')
       })

@@ -23,9 +23,9 @@ const deepmerge = require('deepmerge')
  */
 const mkdirp = dir => {
   dir = dir || ''
-  let parts = path.resolve(dir).split(path.sep)
+  const parts = path.resolve(dir).split(path.sep)
   for (let i = 1; i < parts.length; i++) {
-    let segment = path.join(parts.slice(0, i + 1).join(path.sep) + path.sep)
+    const segment = path.join(parts.slice(0, i + 1).join(path.sep) + path.sep)
     if (!fs.existsSync(segment)) fs.mkdirSync(segment)
   }
 }
@@ -36,7 +36,7 @@ const mkdirp = dir => {
  * @param {Object} obj
  * @param {String} key
  */
-let getProp = (obj, key) => obj[Object.keys(obj).find(k => k.toLowerCase() === key.toLowerCase())]
+const getProp = (obj, key) => obj[Object.keys(obj).find(k => k.toLowerCase() === key.toLowerCase())]
 
 /**
  * get a value in an object by dot notation.
@@ -46,8 +46,8 @@ let getProp = (obj, key) => obj[Object.keys(obj).find(k => k.toLowerCase() === k
  *
  * @return {Object}
  */
-let getValue = (obj, key) => {
-  let keys = (key || '').toString().split('.')
+const getValue = (obj, key) => {
+  const keys = (key || '').toString().split('.')
   return keys.filter(o => o.trim()).reduce((o, i) => o && getProp(o, i), obj)
 }
 
@@ -63,14 +63,14 @@ let getValue = (obj, key) => {
  *
  * @return {Object}
  */
-let setValue = (key, value, obj) => {
-  let parts = (key || '').split('.').filter(o => o.trim())
+const setValue = (key, value, obj) => {
+  const parts = (key || '').split('.').filter(o => o.trim())
   if (parts.length === 0) return value
 
-  let result = { ...obj }
+  const result = { ...obj }
   let node = result
   while (parts.length > 1) {
-    let k = parts.shift()
+    const k = parts.shift()
     node[k] = (typeof node[k] === 'object') ? { ...node[k] } : {}
     node = node[k]
   }
@@ -103,7 +103,7 @@ const merge = (...objs) => {
  */
 const shake = obj => {
   const shakeObject = o => {
-    for (let prop in o) {
+    for (const prop in o) {
       if (o[prop] && o[prop].constructor === Object) {
         o[prop] = shakeObject(o[prop])
         if (Object.keys(o[prop]).length === 0) {
@@ -127,7 +127,7 @@ const shake = obj => {
  * @return {Object}
  */
 const loadFile = (file) => {
-  let contents = fs.readFileSync(file, 'utf-8').trim()
+  const contents = fs.readFileSync(file, 'utf-8').trim()
 
   if (contents) {
     if (contents[0] === '{') {

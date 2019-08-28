@@ -15,7 +15,7 @@ const fs = require('fs')
 const path = require('path')
 const debug = require('debug').mock
 const envFile = Symbol.for('aio-cli-config.envfile')
-const envVars = Symbol.for(`aio-cli-config.envVars`)
+const envVars = Symbol.for('aio-cli-config.envVars')
 let processenv, processcwd
 jest.spyOn(fs, 'readFileSync')
 
@@ -133,11 +133,12 @@ describe('parse', () => {
     dotenv()
     expect(process.env).toEqual({
       ...{
-        A: `   12''  \\n`,
-        B: `   12"" \n`,
-        C: `   12  \n`
+        A: '   12\'\'  \\n',
+        B: '   12"" \n',
+        C: '   12  \n'
       },
-      ...processenv })
+      ...processenv
+    })
     expect(debug).toHaveBeenLastCalledWith('added environment variable(s): A, B, C')
     expect(global[envVars]).toEqual(['A', 'B', 'C'])
   })
@@ -152,9 +153,9 @@ describe('parse', () => {
 })
 
 test('should not overwrite process.env values', () => {
-  process.env['A'] = 12
+  process.env.A = 12
   fs.writeFileSync('/project/.env', 'A=1\nB=12')
   dotenv()
-  expect(process.env['B']).toEqual('12')
-  expect(process.env['A']).toEqual('12')
+  expect(process.env.B).toEqual('12')
+  expect(process.env.A).toEqual('12')
 })

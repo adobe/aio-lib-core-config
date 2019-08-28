@@ -38,8 +38,8 @@ class Config {
   reload() {
     dotenv(true)
 
-    const configBasePath = process.env['XDG_CONFIG_HOME'] || path.join(os.homedir(), '.config')
-    this.global = { file: process.env['AIO_CONFIG_FILE'] || path.join(configBasePath, 'aio') }
+    const configBasePath = process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config')
+    this.global = { file: process.env.AIO_CONFIG_FILE || path.join(configBasePath, 'aio') }
     this.local = { file: path.join(process.cwd(), '.aio') }
 
     this.global = { ...this.global, ...readFile(this.global.file) }
@@ -47,11 +47,11 @@ class Config {
 
     this.envs = {}
 
-    let envKeys = []
-    for (let key in process.env) {
-      let match = key.match(/^AIO_(.+)/i)
+    const envKeys = []
+    for (const key in process.env) {
+      const match = key.match(/^AIO_(.+)/i)
       if (match) {
-        let newKey = match[1].toLowerCase()
+        const newKey = match[1].toLowerCase()
           .split(/(?<!_)_(?!_)/)
           .join('.')
           .replace('__', '_')
@@ -76,7 +76,7 @@ class Config {
     else if (source === 'local') vals = this.local.values
     else if (source === 'env') vals = this.envs
 
-    let value = getValue(vals, key)
+    const value = getValue(vals, key)
     if (value == null) return value
     return JSON.parse(JSON.stringify(value))
   }
@@ -84,8 +84,8 @@ class Config {
   set(key, value, local = false) {
     this.values || this.reload()
 
-    let config = (local) ? this.local : this.global
-    let obj = setValue(key, value, config.values)
+    const config = (local) ? this.local : this.global
+    const obj = setValue(key, value, config.values)
 
     debug(`writing config: ${key || '<all>'} at ${config.file}`)
 

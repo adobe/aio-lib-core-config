@@ -10,31 +10,31 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 -->
 
-aio-cna-core-config
+@adobe/aio-lib-core-config
 =======================
 
-[![Version](https://img.shields.io/npm/v/@adobe/aio-cna-core-config.svg)](https://npmjs.org/package/@adobe/aio-cna-core-config)
-[![Downloads/week](https://img.shields.io/npm/dw/@adobe/aio-cna-core-config.svg)](https://npmjs.org/package/@adobe/aio-cna-core-config)
-[![Build Status](https://travis-ci.com/adobe/aio-cna-core-config.svg?branch=master)](https://travis-ci.com/adobe/aio-cna-core-config)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/aio-cna-core-config.svg)](https://greenkeeper.io/)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-cna-core-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-cna-core-config/)
+[![Version](https://img.shields.io/npm/v/@adobe/aio-lib-core-config.svg)](https://npmjs.org/package/@adobe/aio-lib-core-config)
+[![Downloads/week](https://img.shields.io/npm/dw/@adobe/aio-lib-core-config.svg)](https://npmjs.org/package/@adobe/aio-lib-core-config)
+[![Build Status](https://travis-ci.com/adobe/aio-lib-core-config.svg?branch=master)](https://travis-ci.com/adobe/aio-lib-core-config)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/aio-lib-core-config.svg)](https://greenkeeper.io/)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-lib-core-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-lib-core-config/)
 
 This is a nodejs module to allow management of persistant and environment variable configuration.
 
 The module can be added to your project with:
 
 ```javascript
-> yarn add aio-cna-core-config
+> yarn add @adobe/aio-lib-core-config
 
 or
 
-> npm install aio-cna-core-config --save
+> npm install @adobe/aio-lib-core-config --save
 ```
 
 Here is a snippet:
 
 ```javascript
-const config = require('aio-cna-core-config')
+const config = require('@adobe/aio-lib-core-config')
 
 // set a key value
 config.set('pgb.authtoken', 1234)

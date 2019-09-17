@@ -1,6 +1,6 @@
 {
   "name": "@adobe/aio-lib-core-config",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Adobe I/O Configuration Module",
   "main": "./src",
   "repository": "https://github.com/adobe/aio-lib-core-config",

@@ -20,6 +20,7 @@ governing permissions and limitations under the License.
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-lib-core-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-lib-core-config/)
 
 This is a nodejs module to allow management of persistant and environment variable configuration.
+[Docs.](./doc/api.md)
 
 The module can be added to your project with:
 

@@ -2,7 +2,7 @@
   "name": "@adobe/aio-lib-core-config",
   "version": "1.0.15",
   "description": "Adobe I/O Configuration Module",
-  "main": "./src",
+  "main": "./src/index.js",
   "repository": "https://github.com/adobe/aio-lib-core-config",
   "author": "Adobe Inc.",
   "license": "Apache-2.0",
@@ -13,7 +13,9 @@
     "/src"
   ],
   "scripts": {
-    "test": "eslint . && jest  --coverage"
+    "lint": "eslint .",
+    "test": "npm run lint && jest  --coverage",
+    "docs": "jsdoc2md -f 'src/index.js' > doc/api.md"
   },
   "dependencies": {
     "debug": "^4.1.1",
@@ -34,6 +36,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^24.5.0",
     "jest-plugin-fs": "^2.9.0",
+    "jsdoc-to-markdown": "^5.0.1",
     "mock-stdin": "^0.3.1"
   }
 }

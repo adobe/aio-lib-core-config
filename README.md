@@ -20,16 +20,12 @@ governing permissions and limitations under the License.
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-lib-core-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-lib-core-config/)
 
 This is a nodejs module to allow management of persistant and environment variable configuration.
-[Docs.](./doc/api.md)
+
 
 The module can be added to your project with:
 
 ```javascript
-> yarn add @adobe/aio-lib-core-config
-
-or
-
-> npm install @adobe/aio-lib-core-config --save
+npm install @adobe/aio-lib-core-config --save
 ```
 
 Here is a snippet:
@@ -95,6 +91,9 @@ $ AIO_PGB_AUTH__TOKEN=1234 node # use double underscores to specify an underscor
 > config.get('pgb.auth_token')
 1234
 ```
+## Explore
+
+`goto` [API](./doc/api.md)
 
 ## Contributing
 Contributions are welcomed! Read the [Contributing Guide](CONTRIBUTING.md) for more information.

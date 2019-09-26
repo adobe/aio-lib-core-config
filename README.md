@@ -96,7 +96,7 @@ $ AIO_PGB_AUTH__TOKEN=1234 node # use double underscores to specify an underscor
 `goto` [API](./doc/api.md)
 
 ## Contributing
-Contributions are welcomed! Read the [Contributing Guide](CONTRIBUTING.md) for more information.
+Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING.md) for more information.
  
 ## Licensing
 

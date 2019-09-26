@@ -7,18 +7,16 @@ assignees:
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Expected Behaviour
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+### Actual Behaviour
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Reproduce Scenario (including but not limited to)
 
-**Additional context**
-Add any other context about the problem here.
+#### Steps to Reproduce
+
+#### Platform and Version
+
+#### Sample Code that illustrates the problem
+
+#### Logs taken while reproducing problem

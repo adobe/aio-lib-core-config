@@ -1,45 +1,47 @@
-<!--- Provide a general summary of your changes in the Title above -->
+# Contributing
 
-## Description
+Thanks for choosing to contribute!
 
-<!--- Describe your changes in detail -->
+The following are a set of guidelines to follow when contributing to this project.
 
-## Related Issue
+## Code Of Conduct
 
-<!--- This project only accepts pull requests related to open issues -->
-<!--- If suggesting a new feature or change, please discuss it in an issue first -->
-<!--- If fixing a bug, there should be an issue describing it with steps to reproduce -->
-<!--- Please link to the issue here: -->
+This project adheres to the Adobe [code of conduct](../CODE_OF_CONDUCT.md). By participating,
+you are expected to uphold this code. Please report unacceptable behavior to
+[Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
 
-## Motivation and Context
+## Have A Question?
 
-<!--- Why is this change required? What problem does it solve? -->
+Start by filing an issue. The existing committers on this project work to reach
+consensus around project direction and issue solutions within issue threads
+(when appropriate).
 
-## How Has This Been Tested?
+## Contributor License Agreement
 
-<!--- Please describe in detail how you tested your changes. -->
-<!--- Include details of your testing environment, and the tests you ran to -->
-<!--- see how your change affects other areas of the code, etc. -->
+All third-party contributions to this project must be accompanied by a signed contributor
+license agreement. This gives Adobe permission to redistribute your contributions
+as part of the project. [Sign our CLA](https://opensource.adobe.com/cla.html). You
+only need to submit an Adobe CLA one time, so if you have submitted one previously,
+you are good to go!
 
-## Screenshots (if appropriate):
+## Code Reviews
 
-## Types of changes
+All submissions should come in the form of pull requests and need to be reviewed
+by project committers. Read [GitHub's pull request documentation](https://help.github.com/articles/about-pull-requests/)
+for more information on sending pull requests.
 
-<!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
+Lastly, please follow the [pull request template](PULL_REQUEST_TEMPLATE.md) when
+submitting a pull request!
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to change)
+## From Contributor To Committer
 
-## Checklist:
+We love contributions from our community! If you'd like to go a step beyond contributor
+and become a committer with full write access and a say in the project, you must
+be invited to the project. The existing committers employ an internal nomination
+process that must reach lazy consensus (silence is approval) before invitations
+are issued. If you feel you are qualified and want to get more deeply involved,
+feel free to reach out to existing committers to have a conversation about that.
 
-<!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
-<!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
+## Security Issues
 
-- [ ] I have signed the [Adobe Open Source CLA](http://opensource.adobe.com/cla.html).
-- [ ] My code follows the code style of this project.
-- [ ] My change requires a change to the documentation.
-- [ ] I have updated the documentation accordingly.
-- [ ] I have read the **CONTRIBUTING** document.
-- [ ] I have added tests to cover my changes.
-- [ ] All new and existing tests passed.
+Security issues shouldn't be reported on this issue tracker. Instead, [file an issue to our security experts](https://helpx.adobe.com/security/alertus.html)

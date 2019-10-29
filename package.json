@@ -30,13 +30,14 @@
     "eslint": "^6.2.2",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "22.19.0",
+    "eslint-plugin-jest": "23.0.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^24.5.0",
     "jest-plugin-fs": "^2.9.0",
     "jsdoc-to-markdown": "^5.0.1",
+    "memfs": "2.15.5",
     "mock-stdin": "^0.3.1"
   }
 }

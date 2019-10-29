@@ -9,43 +9,51 @@ describe('piped data', () => {
   afterAll(() => stdin.restore())
   afterEach(() => { global[status] = undefined })
 
-  test('should parse piped data', (done) => {
-    pipe().then(res => {
-      expect(res).toEqual('{"foo": "bar"}')
-      done()
-    }).catch(done.fail)
+  test('should parse piped data', () => {
+    return new Promise((resolve, reject) => {
+      pipe().then(res => {
+        expect(res).toEqual('{"foo": "bar"}')
+        resolve()
+      }).catch(reject)
 
-    stdin.send('{"foo": "bar"}')
-    stdin.end()
+      stdin.send('{"foo": "bar"}')
+      stdin.end()
+    })
   })
 
-  test('should allow empty input', (done) => {
-    pipe().then((res) => {
-      expect(res).toEqual('')
-      done()
-    }).catch(done.fail)
+  test('should allow empty input', () => {
+    return new Promise((resolve, reject) => {
+      pipe().then((res) => {
+        expect(res).toEqual('')
+        resolve()
+      }).catch(reject)
 
-    stdin.send('')
-    stdin.end()
+      stdin.send('')
+      stdin.end()
+    })
   })
 
-  test('should return value if not valid yaml or json', (done) => {
-    pipe().then((res) => {
-      expect(res).toEqual('playing_playlist: {{ action }} playlist {{ playlist_name }}')
-      done()
-    }).catch(done.fail)
+  test('should return value if not valid yaml or json', () => {
+    return new Promise((resolve, reject) => {
+      pipe().then((res) => {
+        expect(res).toEqual('playing_playlist: {{ action }} playlist {{ playlist_name }}')
+        resolve()
+      }).catch(reject)
 
-    stdin.send('playing_playlist: {{ action }} playlist {{ playlist_name }}')
-    stdin.end()
+      stdin.send('playing_playlist: {{ action }} playlist {{ playlist_name }}')
+      stdin.end()
+    })
   })
 })
 
 describe('tty', () => {
-  test('should return undefined if no piped data present', (done) => {
-    process.stdin.isTTY = true
-    pipe().then(res => {
-      expect(res).toEqual(undefined)
-      done()
-    }).catch(done.fail)
+  test('should return undefined if no piped data present', () => {
+    return new Promise((resolve, reject) => {
+      process.stdin.isTTY = true
+      pipe().then(res => {
+        expect(res).toEqual(undefined)
+        resolve()
+      }).catch(reject)
+    })
   })
 })

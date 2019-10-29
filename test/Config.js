@@ -179,10 +179,13 @@ describe('Config', () => {
   describe('debugging', () => {
     test('should not fail on error', () => {
       const config = new Config()
-      fs.readFileSync = jest.fn(() => {
+      const mockThrowsError = jest.fn(() => {
         throw new Error('a')
       })
+      fs.readFileSync = mockThrowsError
+
       config.reload()
+      expect(mockThrowsError).toHaveBeenCalled()
     })
   })
 })

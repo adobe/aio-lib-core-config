@@ -37,7 +37,7 @@
     "jest": "^24.5.0",
     "jest-plugin-fs": "^2.9.0",
     "jsdoc-to-markdown": "^5.0.1",
-    "memfs": "2.15.5",
+    "memfs": "2.16.1",
     "mock-stdin": "^0.3.1"
   }
 }

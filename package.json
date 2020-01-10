@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && jest  --coverage",
+    "unit-tests": "jest  --coverage",
+    "test": "npm run lint && npm run unit-tests",
     "docs": "jsdoc2md -f 'src/index.js' > doc/api.md"
   },
   "dependencies": {

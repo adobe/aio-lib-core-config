@@ -124,6 +124,8 @@ describe('parse', () => {
     fs.writeFileSync('/project/.env', fixtureFile('dollarsign'))
     dotenv()
     expect(process.env.AIO_$foo).toEqual('bar')
+    expect(process.env.$foo).toEqual('baz')
+    expect(process.env.foo$).toEqual('caz')
   })
 
   test('comment', () => {

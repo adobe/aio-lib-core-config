@@ -14,15 +14,18 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && jest  --coverage",
-    "docs": "jsdoc2md -f 'src/index.js' > doc/api.md"
+    "unit-tests": "jest  --coverage",
+    "test": "npm run lint && npm run unit-tests",
+    "docs": "jsdoc2md -f 'src/index.js' > doc/api.md",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "debug": "^4.1.1",
     "deepmerge": "^4.0.0",
     "dotenv": "^8.0.0",
     "hjson": "^3.1.2",
-    "js-yaml": "^3.13.0"
+    "js-yaml": "^3.13.0",
+    "patch-package": "^6.2.0"
   },
   "devDependencies": {
     "babel-runtime": "^6.26.0",

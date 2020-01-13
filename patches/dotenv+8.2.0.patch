@@ -1,0 +1,13 @@
+diff --git a/node_modules/dotenv/lib/main.js b/node_modules/dotenv/lib/main.js
+index e6c591c..f391cb5 100644
+--- a/node_modules/dotenv/lib/main.js
++++ b/node_modules/dotenv/lib/main.js
+@@ -29,7 +29,7 @@ function log (message /*: string */) {
+ }
+ 
+ const NEWLINE = '\n'
+-const RE_INI_KEY_VAL = /^\s*([\w.-]+)\s*=\s*(.*)?\s*$/
++const RE_INI_KEY_VAL = /^\s*([\w.-\\$]+)\s*=\s*(.*)?\s*$/
+ const RE_NEWLINES = /\\n/g
+ const NEWLINES_MATCH = /\n|\r|\r\n/
+ 

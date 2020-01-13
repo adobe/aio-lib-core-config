@@ -54,7 +54,7 @@ class Config {
         const newKey = match[1].toLowerCase()
           .split(/(?<!_)_(?!_)/)
           .join('.')
-          .replace('__', '_')
+          .replace(/__/gi, '_')
         envKeys.push(newKey)
         this.envs = setValue(newKey, process.env[key], this.envs)
       }

@@ -10,7 +10,8 @@
     "node": ">=10.0"
   },
   "files": [
-    "/src"
+    "/src",
+    "/patches"
   ],
   "scripts": {
     "lint": "eslint .",

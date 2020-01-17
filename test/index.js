@@ -83,5 +83,13 @@ describe('Index', () => {
       expect(config.reload()).toBe(config)
       expect(mockReload).toHaveBeenCalledWith()
     })
+
+    test('getPipedData', () => {
+      expect(typeof config.getPipedData).toEqual('function')
+    })
+
+    test('dotenv', () => {
+      expect(typeof config.dotenv).toEqual('function')
+    })
   })
 })

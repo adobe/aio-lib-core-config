@@ -1,46 +1,37 @@
-## Functions
+<a name="ConfigAPI"></a>
 
-<dl>
-<dt><a href="#get">get([key], [source])</a></dt>
-<dd><p>Gets the value for a key in the Config.
-If no parameters are specified, it will return all keys and values of the consolidated Config.</p>
-</dd>
-<dt><a href="#set">set(key, value, [local])</a></dt>
-<dd><p>Set the value for a key in the Config.</p>
-</dd>
-<dt><a href="#delete">delete(key, [local])</a></dt>
-<dd><p>Delete a key and its value in the Config.</p>
-</dd>
-<dt><a href="#reload">reload()</a></dt>
-<dd><p>Reload the Config from all the config file(s)</p>
-</dd>
-<dt><a href="#getPipedData">getPipedData()</a> ⇒ <code>Promise</code></dt>
-<dd><p>Pipe data from stdin.</p>
-</dd>
-<dt><a href="#dotenv">dotenv([force])</a></dt>
-<dd><p>Hoists variables in the ./.env file to process.env</p>
-</dd>
-</dl>
+## ConfigAPI
+This class provides methods to access the config for Adobe I/O libraries.
 
-<a name="get"></a>
+**Kind**: global class  
 
-## get([key], [source])
+* [ConfigAPI](#ConfigAPI)
+    * [.get([key], [source])](#ConfigAPI+get)
+    * [.set(key, value, [local])](#ConfigAPI+set)
+    * [.delete(key, [local])](#ConfigAPI+delete)
+    * [.reload()](#ConfigAPI+reload)
+    * [.getPipedData()](#ConfigAPI+getPipedData) ⇒ <code>Promise</code>
+    * [.dotenv([force])](#ConfigAPI+dotenv)
+
+<a name="ConfigAPI+get"></a>
+
+### configAPI.get([key], [source])
 Gets the value for a key in the Config.
 If no parameters are specified, it will return all keys and values of the consolidated Config.
 
-**Kind**: global function  
+**Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [key] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | the key to get the value from |
 | [source] | <code>string</code> |  | 'global', 'local', or 'env'. Defaults to searching the consolidated config. |
 
-<a name="set"></a>
+<a name="ConfigAPI+set"></a>
 
-## set(key, value, [local])
+### configAPI.set(key, value, [local])
 Set the value for a key in the Config.
 
-**Kind**: global function  
+**Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -48,36 +39,36 @@ Set the value for a key in the Config.
 | value | <code>string</code> |  | the value to save for the key |
 | [local] | <code>string</code> | <code>false</code> | Set to true to save the value in the local config. Defaults to false (save to global config). |
 
-<a name="delete"></a>
+<a name="ConfigAPI+delete"></a>
 
-## delete(key, [local])
+### configAPI.delete(key, [local])
 Delete a key and its value in the Config.
 
-**Kind**: global function  
+**Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | key | <code>string</code> |  | the key to delete the value from |
 | [local] | <code>string</code> | <code>false</code> | Set to true to delete the value in the local config. Defaults to false (save to global config). |
 
-<a name="reload"></a>
+<a name="ConfigAPI+reload"></a>
 
-## reload()
+### configAPI.reload()
 Reload the Config from all the config file(s)
 
-**Kind**: global function  
-<a name="getPipedData"></a>
+**Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
+<a name="ConfigAPI+getPipedData"></a>
 
-## getPipedData() ⇒ <code>Promise</code>
+### configAPI.getPipedData() ⇒ <code>Promise</code>
 Pipe data from stdin.
 
-**Kind**: global function  
-<a name="dotenv"></a>
+**Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
+<a name="ConfigAPI+dotenv"></a>
 
-## dotenv([force])
+### configAPI.dotenv([force])
 Hoists variables in the ./.env file to process.env
 
-**Kind**: global function  
+**Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |

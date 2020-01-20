@@ -10,8 +10,8 @@ This class provides methods to access the config for Adobe I/O libraries.
     * [.set(key, value, [local])](#ConfigAPI+set)
     * [.delete(key, [local])](#ConfigAPI+delete)
     * [.reload()](#ConfigAPI+reload)
-    * [.getPipedData()](#ConfigAPI+getPipedData) ⇒ <code>Promise</code>
-    * [.dotenv([force])](#ConfigAPI+dotenv)
+    * [.getPipedData()](#ConfigAPI+getPipedData) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.dotenv(the)](#ConfigAPI+dotenv)
 
 <a name="ConfigAPI+get"></a>
 
@@ -37,7 +37,7 @@ Set the value for a key in the Config.
 | --- | --- | --- | --- |
 | key | <code>string</code> |  | the key to set the value to |
 | value | <code>string</code> |  | the value to save for the key |
-| [local] | <code>string</code> | <code>false</code> | Set to true to save the value in the local config. Defaults to false (save to global config). |
+| [local] | <code>boolean</code> | <code>false</code> | Set to true to save the value in the local config. Defaults to false (save to global config). |
 
 <a name="ConfigAPI+delete"></a>
 
@@ -49,7 +49,7 @@ Delete a key and its value in the Config.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | key | <code>string</code> |  | the key to delete the value from |
-| [local] | <code>string</code> | <code>false</code> | Set to true to delete the value in the local config. Defaults to false (save to global config). |
+| [local] | <code>boolean</code> | <code>false</code> | Set to true to delete the value in the local config. Defaults to false (save to global config). |
 
 <a name="ConfigAPI+reload"></a>
 
@@ -59,18 +59,18 @@ Reload the Config from all the config file(s)
 **Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 <a name="ConfigAPI+getPipedData"></a>
 
-### configAPI.getPipedData() ⇒ <code>Promise</code>
+### configAPI.getPipedData() ⇒ <code>Promise.&lt;string&gt;</code>
 Pipe data from stdin.
 
 **Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 <a name="ConfigAPI+dotenv"></a>
 
-### configAPI.dotenv([force])
+### configAPI.dotenv(the)
 Hoists variables in the ./.env file to process.env
 
 **Kind**: instance method of [<code>ConfigAPI</code>](#ConfigAPI)  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [force] | <code>boolean</code> | <code>false</code> | force reload of the .env file |
+| Param | Type | Description |
+| --- | --- | --- |
+| the | <code>Object</code> | dotenv object |
 

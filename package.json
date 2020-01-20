@@ -17,7 +17,9 @@
     "lint": "eslint .",
     "unit-tests": "jest  --coverage",
     "test": "npm run lint && npm run unit-tests",
-    "docs": "jsdoc2md -f 'src/index.js' > doc/api.md",
+    "jsdoc": "jsdoc2md -f 'src/index.js' > doc/api.md",
+    "typings": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
+    "generate-docs": "npm run jsdoc && npm run typings",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -41,7 +43,8 @@
     "jest": "^24.5.0",
     "jest-plugin-fs": "^2.9.0",
     "jsdoc-to-markdown": "^5.0.1",
-    "mock-stdin": "^1.0.0"
+    "mock-stdin": "^1.0.0",
+    "tsd-jsdoc": "^2.4.0"
   },
   "bundleDependencies": [
     "dotenv"

@@ -35,7 +35,7 @@ class ConfigAPI {
    *
    * @param {string} key the key to set the value to
    * @param {string} value the value to save for the key
-   * @param {string} [local=false] Set to true to save the value in the local config. Defaults to false (save to global config).
+   * @param {boolean} [local=false] Set to true to save the value in the local config. Defaults to false (save to global config).
    */
   set(key, value, local) {
     return config.set(key, value, local) && this
@@ -45,7 +45,7 @@ class ConfigAPI {
    * Delete a key and its value in the Config.
    *
    * @param {string} key the key to delete the value from
-   * @param {string} [local=false] Set to true to delete the value in the local config. Defaults to false (save to global config).
+   * @param {boolean} [local=false] Set to true to delete the value in the local config. Defaults to false (save to global config).
    */
   delete(key, local) {
     return config.set(key, null, local) && this
@@ -62,7 +62,7 @@ class ConfigAPI {
    * Pipe data from stdin.
    *
    * @function
-   * @return {Promise}
+   * @return {Promise<string>}
    */
   get getPipedData() {
     return pipe
@@ -72,7 +72,7 @@ class ConfigAPI {
    * Hoists variables in the ./.env file to process.env
    *
    * @function
-   * @param {boolean} [force=false] force reload of the .env file
+   * @param {Object} the dotenv object
    */
   get dotenv() {
     return dotenv

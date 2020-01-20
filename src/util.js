@@ -17,9 +17,9 @@ const hjson = require('hjson')
 const deepmerge = require('deepmerge')
 
 /**
- * support for mkdir -p.
+ * Support for mkdir -p.
  *
- * @param {String} dir
+ * @param {String} dir the folder to create
  */
 const mkdirp = dir => {
   dir = dir || ''
@@ -31,7 +31,7 @@ const mkdirp = dir => {
 }
 
 /**
- * get property from object with case insensitivity.
+ * Get property from object with case insensitivity.
  *
  * @param {Object} obj
  * @param {String} key
@@ -39,7 +39,7 @@ const mkdirp = dir => {
 const getProp = (obj, key) => obj[Object.keys(obj).find(k => k.toLowerCase() === key.toLowerCase())]
 
 /**
- * get a value in an object by dot notation.
+ * Get a value in an object by dot notation.
  *
  * @param {String} key
  * @param {Object} obj
@@ -52,10 +52,7 @@ const getValue = (obj, key) => {
 }
 
 /**
- *
-*/
-/**
- * set a value by dot notation.
+ * Set a value by dot notation.
  *
  * @param {String} key
  * @param {String} value
@@ -79,9 +76,9 @@ const setValue = (key, value, obj) => {
 }
 
 /**
- * deep merge a collection of objs returning a new object.
+ * Deep merge a collection of objs returning a new object.
  *
- * @param  {...objs} objs
+ * @param  {Array} objs array of objects
  *
  * @return {Object}
  */
@@ -95,7 +92,7 @@ const merge = (...objs) => {
 }
 
 /**
- * remove empty leaves from an object.
+ * Remove empty leaves from an object.
  *
  * @param {Object} obj
  *
@@ -120,7 +117,7 @@ const shake = obj => {
 }
 
 /**
- * deserialise from a file.
+ * Deserialise from a file.
  *
  * @param {String} file
  *

@@ -11,7 +11,8 @@
   },
   "files": [
     "/src",
-    "/patches"
+    "/patches",
+    "/types.d.ts"
   ],
   "scripts": {
     "lint": "eslint .",

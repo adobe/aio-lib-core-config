@@ -10,7 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-const mockGet = jest.fn(() => 12)
+const mockGetValue = 12
+const mockGet = jest.fn(() => mockGetValue)
 const mockReload = jest.fn(() => true)
 const mockSet = jest.fn(() => true)
 
@@ -40,8 +41,9 @@ describe('Index', () => {
     })
 
     test('get', () => {
-      config.get('akey')
+      const value = config.get('akey')
       expect(mockGet).toHaveBeenCalledWith('akey', undefined)
+      expect(value).toEqual(mockGetValue)
     })
 
     test('get local', () => {

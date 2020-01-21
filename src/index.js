@@ -27,7 +27,7 @@ class ConfigAPI {
    * @param {string} [source] 'global', 'local', or 'env'. Defaults to searching the consolidated config.
    */
   get(key, source) {
-    config.get(key, source)
+    return config.get(key, source)
   }
 
   /**

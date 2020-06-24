@@ -11,7 +11,6 @@
   },
   "files": [
     "/src",
-    "/patches",
     "/types.d.ts"
   ],
   "scripts": {
@@ -20,16 +19,14 @@
     "test": "npm run lint && npm run unit-tests",
     "jsdoc": "jsdoc2md -f 'src/index.js' > doc/api.md",
     "typings": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
-    "generate-docs": "npm run jsdoc && npm run typings",
-    "postinstall": "patch-package"
+    "generate-docs": "npm run jsdoc && npm run typings"
   },
   "dependencies": {
     "debug": "^4.1.1",
     "deepmerge": "^4.0.0",
     "dotenv": "8.2.0",
     "hjson": "^3.1.2",
-    "js-yaml": "^3.13.0",
-    "patch-package": "^6.2.0"
+    "js-yaml": "^3.13.0"
   },
   "devDependencies": {
     "babel-runtime": "^6.26.0",

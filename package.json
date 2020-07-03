@@ -42,8 +42,5 @@
     "jsdoc-to-markdown": "^5.0.1",
     "mock-stdin": "^1.0.0",
     "tsd-jsdoc": "^2.4.0"
-  },
-  "bundleDependencies": [
-    "dotenv"
-  ]
+  }
 }

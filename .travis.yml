@@ -13,7 +13,7 @@ node_js:
 
 install:
   - npm version
-  - npm install --force
+  - npm install
 script:
   - npm test
 

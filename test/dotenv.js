@@ -128,6 +128,14 @@ describe('parse', () => {
     expect(global[envVars]).toEqual(['E'])
   })
 
+  test('comment on duplicate variable declaration in .env file', () => {
+    fs.writeFileSync('/project/.env', fixtureFile('comment_dup'))
+    dotenv()
+    expect(process.env).toEqual({ ...{ E: '6' }, ...processenv })
+    expect(debug).toHaveBeenCalledWith('duplicate declaration of environment variable E in /project/.env')
+    expect(global[envVars]).toEqual(['E'])
+  })
+
   test('quotes', () => {
     fs.writeFileSync('/project/.env', fixtureFile('quotes'))
     dotenv()

@@ -15,7 +15,7 @@ governing permissions and limitations under the License.
 
 [![Version](https://img.shields.io/npm/v/@adobe/aio-lib-core-config.svg)](https://npmjs.org/package/@adobe/aio-lib-core-config)
 [![Downloads/week](https://img.shields.io/npm/dw/@adobe/aio-lib-core-config.svg)](https://npmjs.org/package/@adobe/aio-lib-core-config)
-[![Build Status](https://travis-ci.com/adobe/aio-lib-core-config.svg?branch=master)](https://travis-ci.com/adobe/aio-lib-core-config)
+![Node.js CI](https://github.com/adobe/aio-lib-core-config/workflows/Node.js%20CI/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/adobe/aio-lib-core-config/master.svg?style=flat-square)](https://codecov.io/gh/adobe/aio-lib-core-config/)
 [![Size(minified)](https://badgen.net/bundlephobia/min/@adobe/aio-lib-core-config)](https://npmjs.org/package/@adobe/aio-lib-core-config)

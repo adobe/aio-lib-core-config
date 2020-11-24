@@ -16,6 +16,7 @@ const envFile = Symbol.for('aio-cli-config.envfile')
 const envVars = Symbol.for('aio-cli-config.envVars')
 const debug = require('debug')('aio-cli-config')
 const dotenv = require('dotenv')
+const dotenvExtended = require('dotenv-extended');
 
 /**
  * parse file for environmental variables
@@ -23,8 +24,16 @@ const dotenv = require('dotenv')
  * @param {String} file filepath to parse
  */
 const parse = (file) => {
-  const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
-  return dotenv.parse(buf) // will return an object
+  // debug('right here')
+  return dotenvExtended.load({
+    path: file,
+    silent: true,
+    errorOnMissing: true,
+    errorOnExtra: false,
+    assignToProcessEnv: false
+  })
+  /* const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
+  return dotenv.parse(buf) // will return an object */
 }
 
 /**
@@ -76,6 +85,7 @@ module.exports = function(force = false) {
         debug(`cannot read environment variables from ${file}`)
         debug(` - ${ex}`)
         debug('skipping ...')
+        throw ex
       }
     }
   }

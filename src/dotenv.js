@@ -30,7 +30,9 @@ const parse = (file) => {
     silent: true,
     errorOnMissing: true,
     errorOnExtra: false,
-    assignToProcessEnv: false
+    assignToProcessEnv: false,
+    errorOnRegex: true,
+    includeProcessEnv: true
   })
   /* const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
   return dotenv.parse(buf) // will return an object */

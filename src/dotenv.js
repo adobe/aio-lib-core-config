@@ -34,21 +34,35 @@ const parse = (file) => {
  * @param {String} file filepath to parse
  */
 const checkForDuplicates = (file) => {
-  const NEWLINES_MATCH = /\n|\r|\r\n/
-  const RE_INI_KEY_VAL = /^\s*([\w.-]+)\s*=\s*(.*)?\s*$/
-  const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
-  const obj = {}
-  buf.toString().split(NEWLINES_MATCH).forEach(function(line, idx) {
-    const keyValueArr = line.match(RE_INI_KEY_VAL)
-    if (keyValueArr != null) {
-      const key = keyValueArr[1]
-      if (obj[key]) {
-        debug(`duplicate declaration of environment variable ${key} in ${file}`)
-      } else {
-        obj[key] = 'dummy'
+  try {
+    const NEWLINES_MATCH = /\n|\r|\r\n/
+    const RE_INI_KEY_VAL = /^\s*([\w.-]+)\s*=\s*(.*)?\s*$/
+    const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
+    const obj = {}
+    const dupKeys = []
+    buf.toString().split(NEWLINES_MATCH).forEach(function(line, idx) {
+      const keyValueArr = line.match(RE_INI_KEY_VAL)
+      if (keyValueArr != null) {
+        const key = keyValueArr[1]
+        if (obj[key]) {
+          dupKeys.push(`${key}`)
+        } else {
+          obj[key] = 'dummy'
+        }
       }
+    })
+    if (dupKeys.length > 0) {
+      let debugMsg = 'duplicate declaration of environment variable(s)'
+      dupKeys.forEach((key) => {
+        debugMsg = debugMsg + ` ${key},`
+      })
+      debugMsg = debugMsg.slice(0, -1)
+      debugMsg = debugMsg + ` in ${file}`
+      debug(debugMsg)
     }
-  })
+  } catch (err) {
+    // Ignore
+  }
 }
 
 /**

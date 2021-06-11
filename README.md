@@ -50,7 +50,7 @@ config.get('pgb.authtoken')
 config.delete('pgb.authtoken')
 ```
 
-## Peristent File Locations
+## Persistent File Locations
 
 ### User Configuration
 

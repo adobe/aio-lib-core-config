@@ -20,18 +20,29 @@ const processcwd = process.cwd
 const oshomedir = os.homedir
 
 const hjsonFormat = (obj) => hjson.stringify(obj, { condense: true, emitRootBraces: true, separator: true, bracesSameLine: true, multiline: 'off' })
+const HOME_DIR = '/Users/foo'
+const WORKING_DIR = '/Project/runtime'
+let originalXdgConfigHome
 
 beforeAll(() => {
-  os.homedir = () => path.resolve('/Users/foo')
-  process.cwd = () => path.resolve('/Project/runtime')
+  os.homedir = () => path.resolve(HOME_DIR)
+  process.cwd = () => path.resolve(WORKING_DIR)
+  originalXdgConfigHome = process.env.XDG_CONFIG_HOME
 })
 
 afterAll(() => {
   process.cwd = processcwd
   os.homedir = oshomedir
+  if (originalXdgConfigHome) {
+    process.env.XDG_CONFIG_HOME = originalXdgConfigHome
+  }
 })
 
 const Config = require('../src/Config')
+
+beforeEach(() => {
+  delete process.env.XDG_CONFIG_HOME
+})
 
 afterEach(() => {
   jest.clearAllMocks()
@@ -47,11 +58,19 @@ describe('Config', () => {
     expect(config.constructor.name).toEqual('Config')
   })
 
-  test('should initialise values', () => {
+  test('should initialise values (XDG_CONFIG_HOME unset)', () => {
     const config = new Config()
     config.reload()
-    expect(config.global).toEqual({ file: path.resolve('/Users/foo/.config/aio'), format: 'json' })
-    expect(config.local).toEqual({ file: path.resolve('/Project/runtime/.aio'), format: 'json' })
+    expect(config.global).toEqual({ file: path.resolve(`${HOME_DIR}/.config/aio`), format: 'json' })
+    expect(config.local).toEqual({ file: path.resolve(`${WORKING_DIR}/.aio`), format: 'json' })
+  })
+
+  test('should initialise values (XDG_CONFIG_HOME set)', () => {
+    const configHome = process.env.XDG_CONFIG_HOME = path.resolve('/foo/bar')
+    const config = new Config()
+    config.reload()
+    expect(config.global).toEqual({ file: path.resolve(`${configHome}/aio`), format: 'json' })
+    expect(config.local).toEqual({ file: path.resolve(`${WORKING_DIR}/.aio`), format: 'json' })
   })
 
   describe('load', () => {

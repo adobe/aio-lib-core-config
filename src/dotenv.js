@@ -100,6 +100,18 @@ module.exports = function(force = false) {
     try {
       clear()
       const envs = parse(file)
+
+      // Convert envs to uppercase
+      for (const key in envs) {
+        const keyName = key
+        const uppercaseKeyName = keyName.toUpperCase()
+        const keyValue = envs[key]
+        if (!(uppercaseKeyName in envs)) {
+          envs[uppercaseKeyName] = keyValue
+          delete envs[keyName]
+        }
+      }
+
       const newKeys = diff(envs, process.env).sort()
 
       debug(`loading environment variables from ${file}`)

@@ -120,6 +120,27 @@ describe('parse', () => {
     expect(process.env.D).toEqual('')
   })
 
+  test('converts lowercase names to uppercase names', () => {
+    fs.writeFileSync('/project/.env', fixtureFile('lowercase'))
+    dotenv()
+    expect(process.env.A_A).toEqual('')
+    expect(process.env.B_B).toEqual('')
+    expect(process.env.C_C).toEqual('')
+    expect(process.env.D_D).toEqual('')
+  })
+
+  test('hoists existing uppercase, ignores other case variations', () => {
+    fs.writeFileSync('/project/.env', fixtureFile('lowercase_dup_already_exists'))
+    dotenv()
+    expect(process.env.A_A).toEqual('1')
+  })
+
+  test('hoists first of variations, ignores other case variations', () => {
+    fs.writeFileSync('/project/.env', fixtureFile('lowercase_dup_last_variation'))
+    dotenv()
+    expect(process.env.A_A).toEqual('1')
+  })
+
   test('comment', () => {
     fs.writeFileSync('/project/.env', fixtureFile('comment'))
     dotenv()

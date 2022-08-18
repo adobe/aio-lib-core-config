@@ -88,12 +88,6 @@ const clear = () => {
   }
 }
 
-/**
- * hoists variables in the ./.env file to process.env
- *
- * @param {Function} debug optional function for debugging
- *
- */
 module.exports = function(force = false) {
   const file = path.join(process.cwd(), '.env')
   if (force || global[envFile] !== file) {

@@ -79,7 +79,4 @@ class ConfigAPI {
   }
 }
 
-/**
- * @returns {ConfigAPI}
- */
 module.exports = new ConfigAPI()

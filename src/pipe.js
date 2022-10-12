@@ -12,9 +12,6 @@ governing permissions and limitations under the License.
 
 const status = Symbol.for('aio-cli-config.pipe')
 
-/**
- * get piped data from stdin
- */
 module.exports = () => new Promise((resolve) => {
   if (global[status] || process.stdin.isTTY) return resolve(global[status])
 

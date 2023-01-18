@@ -42,7 +42,7 @@ class Config {
     // note that there is a very strong side effect here and if we ever want to change
     // the command developers use ( ex. adp or adobe ) we will need to migrate the config
     let configRootKey = process.argv[1].split(path.sep).pop().replace(/-/g, '_').toLowerCase()
-    if (configRootKey === 'jest') {
+    if (['jest', 'jest.js'].includes(configRootKey)) {
       configRootKey = 'aio'
     }
     const configBasePath = process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config')

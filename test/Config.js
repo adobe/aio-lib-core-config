@@ -81,6 +81,22 @@ describe('Config', () => {
     })
   })
 
+  describe('load (alt cli)', () => {
+    test('should be passed in function', () => {
+      process.env.WTF_ONE_DOZEN = 12
+      const configHome = process.env.XDG_CONFIG_HOME = path.resolve('/foo/bar')
+      const preArg = process.argv[1]
+      process.argv[1] = 'wtf'
+      const debug = () => true
+      const config = new Config(debug)
+      expect(config.reload()).toBe(config)
+      expect(config.get('one.dozen')).toBe('12')
+      expect(config.global).toEqual({ file: path.resolve(`${configHome}/wtf`), format: 'json' })
+      process.argv[1] = preArg
+      delete process.env.WTF_ONE_DOZEN
+    })
+  })
+
   describe('get', () => {
     test('should be an empty function', () => {
       const config = new Config()

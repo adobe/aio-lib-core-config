@@ -37,10 +37,18 @@ const readFile = (file) => {
 class Config {
   reload() {
     dotenv(true)
-
+    // get the executable name and use it as the config root key
+    // this could be aio or wxp or whatever
+    // note that there is a very strong side effect here and if we ever want to change
+    // the command developers use ( ex. adp or adobe ) we will need to migrate the config
+    let configRootKey = process.argv[1].split(path.sep).pop().replace(/-/g, '_').toLowerCase()
+    if (configRootKey === 'jest') {
+      configRootKey = 'aio'
+    }
     const configBasePath = process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config')
-    this.global = { file: process.env.AIO_CONFIG_FILE || path.join(configBasePath, 'aio') }
-    this.local = { file: path.join(process.cwd(), '.aio') }
+
+    this.global = { file: process.env.AIO_CONFIG_FILE || path.join(configBasePath, configRootKey) }
+    this.local = { file: path.join(process.cwd(), `.${configRootKey}`) }
 
     this.global = { ...this.global, ...readFile(this.global.file) }
     this.local = { ...this.local, ...readFile(this.local.file) }
@@ -49,8 +57,11 @@ class Config {
 
     const envKeys = []
     for (const key in process.env) {
-      const match = key.match(/^AIO_(.+)/i)
+      const dynamicKey = new RegExp(`^${configRootKey.toUpperCase()}_(.+)`, 'i')
+      const match = key.match(dynamicKey)
       if (match) {
+        // join single _ with .
+        // replace double __ with _
         const newKey = match[1].toLowerCase()
           .split(/(?<!_)_(?!_)/)
           .join('.')

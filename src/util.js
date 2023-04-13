@@ -19,7 +19,7 @@ const deepmerge = require('deepmerge')
 /**
  * Support for mkdir -p.
  *
- * @param {String} dir the folder to create
+ * @param {string} dir the folder to create
  */
 const mkdirp = dir => {
   dir = dir || ''
@@ -33,18 +33,18 @@ const mkdirp = dir => {
 /**
  * Get property from object with case insensitivity.
  *
- * @param {Object} obj
- * @param {String} key
+ * @param {object} obj
+ * @param {string} key
+ * @private
  */
 const getProp = (obj, key) => obj[Object.keys(obj).find(k => k.toLowerCase() === key.toLowerCase())]
 
 /**
  * Get a value in an object by dot notation.
  *
- * @param {String} key
- * @param {Object} obj
- *
- * @return {Object}
+ * @param {object} obj the object to get the value for the key from
+ * @param {string} key the key
+ * @returns {object} the value
  */
 const getValue = (obj, key) => {
   const keys = (key || '').toString().split('.')
@@ -54,11 +54,10 @@ const getValue = (obj, key) => {
 /**
  * Set a value by dot notation.
  *
- * @param {String} key
- * @param {String} value
- * @param {Object} [obj]
- *
- * @return {Object}
+ * @param {string} key the key
+ * @param {string} value the value to set
+ * @param {object} [obj] the object to set the value for the key to
+ * @returns {object} the transformed object
  */
 const setValue = (key, value, obj) => {
   const parts = (key || '').split('.').filter(o => o.trim())
@@ -79,8 +78,7 @@ const setValue = (key, value, obj) => {
  * Deep merge a collection of objs returning a new object.
  *
  * @param  {Array} objs array of objects
- *
- * @return {Object}
+ * @returns {object} the merged object
  */
 const merge = (...objs) => {
   // array merge strategy (replace)
@@ -94,9 +92,8 @@ const merge = (...objs) => {
 /**
  * Remove empty leaves from an object.
  *
- * @param {Object} obj
- *
- * @return {Object}
+ * @param {object} obj the object to shake
+ * @returns {object} the object with empty leaves removed
  */
 const shake = obj => {
   const shakeObject = o => {
@@ -119,9 +116,8 @@ const shake = obj => {
 /**
  * Deserialise from a file.
  *
- * @param {String} file
- *
- * @return {Object}
+ * @param {string} file the file to load
+ * @returns {object} object containing the file contents and format
  */
 const loadFile = (file) => {
   const contents = fs.readFileSync(file, 'utf-8').trim()
@@ -147,9 +143,10 @@ const loadFile = (file) => {
 /**
  * yaml serialise an object to a file.
  *
- * @param {String} file
- * @param {Object} obj
- * @param {String} format
+ * @param {string} file the file to save to
+ * @param {object} obj the object to save
+ * @param {string} format the format of the file to save
+ * @returns {object} true if the file was written successfully
  */
 const saveFile = (file, obj, format) => {
   obj = obj || {}
@@ -170,4 +167,11 @@ const saveFile = (file, obj, format) => {
   return true
 }
 
-module.exports = { mkdirp, getValue, setValue, merge, loadFile, saveFile }
+module.exports = {
+  mkdirp,
+  getValue,
+  setValue,
+  merge,
+  loadFile,
+  saveFile
+}

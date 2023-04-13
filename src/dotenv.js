@@ -20,7 +20,8 @@ const dotenv = require('dotenv')
 /**
  * parse file for environmental variables
  *
- * @param {String} file filepath to parse
+ * @param {string} file filepath to parse
+ * @private
  */
 const parse = (file) => {
   checkForDuplicates(file)
@@ -31,7 +32,7 @@ const parse = (file) => {
 /**
  * parse file for environmental variables and log debug message for duplicate definitions
  *
- * @param {String} file filepath to parse
+ * @param {string} file filepath to parse
  */
 const checkForDuplicates = (file) => {
   try {
@@ -40,7 +41,7 @@ const checkForDuplicates = (file) => {
     const buf = Buffer.from(fs.readFileSync(file, 'utf-8'))
     const obj = {}
     const dupKeys = []
-    buf.toString().split(NEWLINES_MATCH).forEach(function(line, idx) {
+    buf.toString().split(NEWLINES_MATCH).forEach(function (line, idx) {
       const keyValueArr = line.match(RE_INI_KEY_VAL)
       if (keyValueArr != null) {
         const key = keyValueArr[1]
@@ -68,10 +69,10 @@ const checkForDuplicates = (file) => {
 /**
  * returns all keys in o1 that arent in o2
  *
- * @param {Object} o1
- * @param {Object} o2
- *
- * @return {Array} array of keys
+ * @param {object} o1
+ * @param {object} o2
+ * @returns {Array} array of keys
+ * @private
  */
 const diff = (o1, o2) => Object.keys(o1).filter(k => !(k in o2))
 
@@ -88,7 +89,7 @@ const clear = () => {
   }
 }
 
-module.exports = function(force = false) {
+module.exports = function (force = false) {
   const file = path.join(process.cwd(), '.env')
   if (force || global[envFile] !== file) {
     try {

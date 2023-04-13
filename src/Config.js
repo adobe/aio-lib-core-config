@@ -19,8 +19,10 @@ const { merge, loadFile, saveFile, getValue, setValue } = require('./util')
 /**
  * read a file and log exceptions to debug
  *
- * @param {String} file
+ * @param {string} file
  * @param {Function} debugFn
+ * @returns {object}
+ * @private
  */
 const readFile = (file) => {
   debug(`reading config: ${file}`)
@@ -35,7 +37,7 @@ const readFile = (file) => {
 }
 
 class Config {
-  reload() {
+  reload () {
     dotenv(true)
     // get the env var and use it as the config root key
     // this could be aio or wxp or whatever
@@ -74,7 +76,7 @@ class Config {
     return this
   }
 
-  get(key = '', source) {
+  get (key = '', source) {
     this.values || this.reload()
     let vals = this.values
 
@@ -87,7 +89,7 @@ class Config {
     return JSON.parse(JSON.stringify(value))
   }
 
-  set(key, value, local = false) {
+  set (key, value, local = false) {
     this.values || this.reload()
 
     const config = (local) ? this.local : this.global

@@ -25,8 +25,9 @@ class ConfigAPI {
    *
    * @param {string} [key=''] the key to get the value from
    * @param {string} [source] 'global', 'local', or 'env'. Defaults to searching the consolidated config.
+   * @returns {string|object} the config value
    */
-  get(key, source) {
+  get (key, source) {
     return config.get(key, source)
   }
 
@@ -36,8 +37,9 @@ class ConfigAPI {
    * @param {string} key the key to set the value to
    * @param {string} value the value to save for the key
    * @param {boolean} [local=false] Set to true to save the value in the local config. Defaults to false (save to global config).
+   * @returns {object} the Config object itself
    */
-  set(key, value, local) {
+  set (key, value, local) {
     return config.set(key, value, local) && this
   }
 
@@ -46,15 +48,18 @@ class ConfigAPI {
    *
    * @param {string} key the key to delete the value from
    * @param {boolean} [local=false] Set to true to delete the value in the local config. Defaults to false (save to global config).
+   * @returns {object} the Config object itself
    */
-  delete(key, local) {
+  delete (key, local) {
     return config.set(key, null, local) && this
   }
 
   /**
    * Reload the Config from all the config file(s)
+   *
+   * @returns {object} the Config object itself, if reload was successful
    */
-  reload() {
+  reload () {
     return config.reload() && this
   }
 
@@ -62,9 +67,9 @@ class ConfigAPI {
    * Pipe data from stdin.
    *
    * @function
-   * @return {Promise<string>}
+   * @returns {Promise<string>} tje pipe
    */
-  get getPipedData() {
+  get getPipedData () {
     return pipe
   }
 
@@ -72,9 +77,9 @@ class ConfigAPI {
    * Hoists variables in the ./.env file to process.env
    *
    * @function
-   * @param {Object} the dotenv object
+   * @returns {object} the dotenv object
    */
-  get dotenv() {
+  get dotenv () {
     return dotenv
   }
 }

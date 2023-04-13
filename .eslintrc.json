@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "fixtureFile": true
+  },
+  "extends": "@adobe/eslint-config-aio-lib-config"
+}

@@ -68,7 +68,24 @@ Local configuration is loaded from **$PWD/.aio**
 
 ### Dot Env Configuration
 
-A local .env file is also loaded.  This file can contain environmental variables
+A local .env file is also loaded.  This file can contain environmental variables.
+
+Note: All environment variable names will be converted to uppercase. 
+
+1. In the event that there are duplicate environment variables, if the uppercase version exists, it will be hoisted. 
+
+```
+aa=1 
+aA=2
+AA=3 <-- Hoisted as AA
+```
+
+2. In the event that there are duplicate environment variables with multiple case variations, the first entry will be hoisted. 
+
+```
+aa=1 <-- Hoisted as AA
+Aa=2
+```
 
 ## Resolving Values
 

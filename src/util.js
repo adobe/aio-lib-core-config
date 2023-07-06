@@ -160,7 +160,7 @@ const saveFile = (file, obj, format) => {
   } else if (format === 'json') {
     str = hjson.stringify(obj, { condense: true, emitRootBraces: true, separator: true, bracesSameLine: true, multiline: 'off' })
   } else {
-    str = yaml.safeDump(obj, { sortKeys: true, lineWidth: 1024, noCompatMode: true })
+    str = yaml.dump(obj, { sortKeys: true, lineWidth: 1024, noCompatMode: true })
   }
 
   fs.writeFileSync(file, str)

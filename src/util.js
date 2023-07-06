@@ -131,7 +131,7 @@ const loadFile = (file) => {
       }
     } else {
       try {
-        return { values: yaml.safeLoad(contents, { json: true }), format: 'yaml' }
+        return { values: yaml.load(contents, { json: true }), format: 'yaml' }
       } catch (e) {
         throw new Error('Cannot parse yaml')
       }
@@ -160,7 +160,7 @@ const saveFile = (file, obj, format) => {
   } else if (format === 'json') {
     str = hjson.stringify(obj, { condense: true, emitRootBraces: true, separator: true, bracesSameLine: true, multiline: 'off' })
   } else {
-    str = yaml.safeDump(obj, { sortKeys: true, lineWidth: 1024, noCompatMode: true })
+    str = yaml.dump(obj, { sortKeys: true, lineWidth: 1024, noCompatMode: true })
   }
 
   fs.writeFileSync(file, str)

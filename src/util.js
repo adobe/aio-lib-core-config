@@ -131,7 +131,7 @@ const loadFile = (file) => {
       }
     } else {
       try {
-        return { values: yaml.safeLoad(contents, { json: true }), format: 'yaml' }
+        return { values: yaml.load(contents, { json: true }), format: 'yaml' }
       } catch (e) {
         throw new Error('Cannot parse yaml')
       }

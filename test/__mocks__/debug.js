@@ -1,4 +1,3 @@
-
 const mockConfig = jest.fn(() => true)
 
 module.exports = () => mockConfig

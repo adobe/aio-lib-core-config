@@ -12,6 +12,7 @@ describe('piped data', () => {
   test('should parse piped data', () => {
     return new Promise((resolve, reject) => {
       pipe().then(res => {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(res).toEqual('{"foo": "bar"}')
         resolve()
       }).catch(reject)
@@ -24,6 +25,7 @@ describe('piped data', () => {
   test('should allow empty input', () => {
     return new Promise((resolve, reject) => {
       pipe().then((res) => {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(res).toEqual('')
         resolve()
       }).catch(reject)
@@ -36,6 +38,7 @@ describe('piped data', () => {
   test('should return value if not valid yaml or json', () => {
     return new Promise((resolve, reject) => {
       pipe().then((res) => {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(res).toEqual('playing_playlist: {{ action }} playlist {{ playlist_name }}')
         resolve()
       }).catch(reject)
@@ -51,6 +54,7 @@ describe('tty', () => {
     return new Promise((resolve, reject) => {
       process.stdin.isTTY = true
       pipe().then(res => {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(res).toEqual(undefined)
         resolve()
       }).catch(reject)
